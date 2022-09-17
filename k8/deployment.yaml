@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nextjs-demo
+  name: nextjs-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextjs-demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nextjs-demo
+    spec:
+      containers:
+      - image: amitgadhia/nextjs-example
+        name: nextjs-example
+        resources: {}
+status: {}
