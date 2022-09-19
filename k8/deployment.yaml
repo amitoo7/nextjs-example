@@ -18,7 +18,7 @@ spec:
         app: nextjs-demo
     spec:
       containers:
-      - image: amitgadhia/nextjs-example
+      - image: thawab/nextjs-example
         name: nextjs-example
         resources: {}
 status: {}
