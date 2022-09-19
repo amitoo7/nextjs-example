@@ -66,7 +66,8 @@ jobs:
           echo "KUBECONFIG=/tmp/.kube/config" >> $GITHUB_ENV
       - name: Deploy to K8S
         run: |
-          kubectl apply -f k8/
-      - name: Restart nginx
+          kubectl apply -f k8/deployment.yaml
+          kubectl apply -f k8/service.yaml
+      - name: Rollout Nextjs
         run: |
           kubectl rollout restart deployment nextjs-demo
