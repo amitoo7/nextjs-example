@@ -1,21 +1,19 @@
-FROM node:16
+# Dockerfile
 
-# Create app directory
-WORKDIR /usr/src/app
+# base image
+FROM node:alpine
 
-RUN echo "hello"
+# create & set working directory
+RUN mkdir -p /usr/src
+WORKDIR /usr/src
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+# copy source files
+COPY . /usr/src
 
+# install dependencies
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
 
-# Bundle app source
-COPY . .
-
-EXPOSE 8080
-CMD [ "node", "server.js" ]
+# start app
+RUN npm run build
+EXPOSE 3000
+CMD npm run start
