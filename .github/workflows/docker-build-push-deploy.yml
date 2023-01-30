@@ -30,7 +30,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nextjs-example:${{ GITHUB_SHA }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nextjs-example:${{ github.sha }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
@@ -47,7 +47,7 @@ jobs:
       env:
         webhook_url: ${{ secrets.WEBHOOK_URL }}
         webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-        data: '{ "dockerImage":"${{ secrets.DOCKER_HUB_USERNAME }}/nextjs-example:${{ GITHUB_SHA }}" }'
+        data: '{ "dockerImage":"${{ secrets.DOCKER_HUB_USERNAME }}/nextjs-example:${{ github.sha }}" }'
 
 #   deploy:
 #     runs-on: ubuntu-latest
