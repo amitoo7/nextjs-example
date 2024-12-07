@@ -35,15 +35,15 @@ jobs:
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
         
-      - name: Invoke webhoook
-        run: | 
-            CODE=`curl --write-out '%{http_code}' \
-            --request POST \
-            --header 'api-token: ${{ secrets.WEBHOOK_SECRET }}' \
-            --header 'content-type: application/json' \
-            --url '${{ secrets.WEBHOOK_URL }}' \
-            --data '{ \
-            "dockerImage": "${{ secrets.DOCKER_HUB_USERNAME }}/nextjs-example:${{ github.sha }}" }'`
+      # - name: Invoke webhoook
+      #   run: | 
+      #       CODE=`curl --write-out '%{http_code}' \
+      #       --request POST \
+      #       --header 'api-token: ${{ secrets.WEBHOOK_SECRET }}' \
+      #       --header 'content-type: application/json' \
+      #       --url '${{ secrets.WEBHOOK_URL }}' \
+      #       --data '{ \
+      #       "dockerImage": "${{ secrets.DOCKER_HUB_USERNAME }}/nextjs-example:${{ github.sha }}" }'`
     
 #   test_webhook:
 #     # The type of runner that the job will run on
